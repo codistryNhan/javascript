@@ -1,0 +1,140 @@
+Functions 2
+  Functions in JavaScript are first-class objects, which means they can be passed around
+  in the same way as every other value.
+
+Properties and Methods
+  Length Property
+    Functions have a property length that indicates the number of arguments
+
+    function add2(a){
+      return a + 2;
+    }
+
+    console.log(add2.length); // 1
+
+  Call and Apply Methods
+    call() is used to set the value of this inside a function
+
+    ex.
+      let obj = { name: 'Bob' };
+
+      function hello(){
+        console.log(`Hello ${this.name}`);
+      }
+
+      hello.apply(obj); // 'Hello Bob';
+
+Immediately Invoked Functions Expressions (IIFE)
+  -An anonymous function that invokes as soon as it's defined
+
+  (function(){
+    let name = 'Bob';
+    console.log(`Hello ${name}`);
+  })();
+
+  -IIFEs are useful for not polluting the global namespace.
+  -Good for initializing tasks.  In ES6, we could use brackets.
+
+  -It is best practice to play 'use strict', in IIFEs.
+   Not everyone's code uses strict mode.
+
+Callbacks
+  A function that is invoked after a certain event occurs.
+
+Promises
+  Promises are used to prevent callback hell
+
+  Creating Promises
+    const promise = new Promise( (resolve, reject) => {
+      //Logic Code goes here
+
+      if(success){
+        resolve(value);
+      } else {
+        reject(error);
+      }
+    });
+
+  Settling a Promise
+    Use .then()
+    Then accepts 2 arguments, the fulfilment function and then rejection function.
+    The fulfilment function returns the data resolved from the promise.
+    The rejection function returns the error rejected from the promise.
+
+    promise.then( result => console.log(`Success! ${result}`),
+      result => console.log(`Failed! ${result}`)
+    );
+
+    Or we can use then() and catch()
+    promise.then( result => console.log(`Success! ${result}`) )
+    .catch( result => console.log(`Failed! ${result}`) );
+
+Async functions
+  allows you to write asynchronous code as if it was synchronous
+  ex.
+  async function loadGame(userName){
+    try {
+      const user = await login(userName);
+      const info = await getPlayerInfo(user.id);
+      //Load game with info
+    }
+
+    catch(error){
+      throw error;
+    }
+  }
+
+  The keyword async before the function will let the program now
+  the function will run asynchronously.  The await keyword before the function
+  will ensure the next line of code will not run until the current function returns.
+
+Generalized Functions
+
+Functions that returning functions
+  ex.
+  //Functions returning functions
+
+  function greeter(greeting = 'Hello'){
+    return function(){
+      console.log(greeting);
+    }
+  }
+
+  const englishGreeter = greeter();
+  englishGreeter();
+
+  const frenchGreeter = greeter('Bonjour');
+  frenchGreeter();
+
+  const germanGreeter = greeter('Guten Tag');
+  germanGreeter();
+
+
+Closures
+  When a function defined inside another function, have access to any variables
+  declared in the outer function's scope.
+
+  closure is formed when the inner function is returned by the outer function,
+  maintaining access to any variables declared inside the enclosing function.
+
+  The parent function's scope variables can also be changed even after the function is invoked.
+
+Functional Programming
+  Pure Functions
+  - The return value of a pure function should only depend on the values
+    provided as arguments.
+  - No side effects, it doesn't change any values of data elsewhere in the program.
+    It only makes non-destructive data transformations and returns new values.
+  - Given the same arguments, a pure function will always return the same result.
+    - At least one argument.
+    - A return value.
+
+  Pure functions help make code more concise and predictable.
+    - Easy to test since return values must be same when the same arguments are provided.
+    - Return values can be cached.
+
+High Order Functions
+  Functions that accept another function as an argument or return a function
+  as a result.
+
+Currying

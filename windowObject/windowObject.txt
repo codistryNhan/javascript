@@ -1,0 +1,148 @@
+The window object is our global object on browsers.
+It's properties and methods contains information about the browser and computer screen.
+
+window.navigator
+window.location
+window.history
+
+Browser information
+window.navigator
+  The window has a property of navigator that contains information about the browser being used.
+
+  window.navigator.userAgent
+  use navigator's userAgent property will return browser and operating system info,
+  but it is not reliable information.
+
+window.location
+  the location property contains information about the URL of the current page.
+
+    window.location.href returns the full URL as a string.
+
+    window.location.protocol returns the protocol used
+      ex. http: https:
+
+    window.location.host returns the domain and port of the URL
+      ex. www.google.com
+
+    window.location.hostname returns a string with just the domain of URL
+      ex. www.google.com
+
+    window.location.port returns the port number or an empty string if the port
+      is not explicitly stated on URL.
+
+    window.location.pathname returns a string of the path that follows the domain
+
+    window.location.search returns a string that starts with "?" followed by the query string parameters.
+
+    window.location.origin returns a string with the protocol and domain
+      "https:www.google.com"
+
+    window.location methods
+      reload() to reload the page.
+      if given paramter of true, it will force the browser to relaod the page from the server
+      instead of a cached page.
+
+      assign() load another resource from a URL provided as a parameter
+
+      replace() same as assign() but the page will not be stored in history,
+      so the user will not be able to navigate back using the back button.
+
+      toString() returns the string containing the whole URL
+
+Browser history
+window.history
+
+  Used to access information from previously visited pages in the current
+  browser session.
+
+  window.history.length
+    shows how many pages have been visted before the current page.
+
+  window.history.go()
+    is used to go to a specific page, where the parameter is a number
+
+    window.history.go(-1) // goes back 1 page
+    window.history.go(0) // reloads the current page
+    window.history.go(1) // goes forward 1 page
+
+  window.history.foward() and window.history.back()
+    navigates foward and back
+
+Controlling Windows
+  window.open(URL, TITLE, ATTRIBUTES)
+    Will open a new window.
+
+  popup.close();
+    closes a window.
+
+  window.moveTo(0,0);
+    will move the Window
+
+  window.resizeTo(600, 400);
+
+Screen information
+  window.screen contains information about the screen of the browser.
+
+    window.screen.height
+
+    window.screen.width
+
+Document Object
+  The window object contains a document object that has properties and methods
+  that deal with the page that has been loaded into the window.
+
+  document.write()  //Should not use
+    writes a string of text to the page.
+    if the page has already loaded, it will replace the current document.
+
+    document.write('<h1>Hello, world!</h1>');
+
+Cookies
+  Cookies are used to store information of a user
+  Cookies can be read by a web page from the same domain that set them
+  Cookies are 4KB max and 20 cookies are allowed per domain
+
+  Creating cookies
+    document.cookie = 'name=Superman';
+    document.cookie = 'hero=true'; //this will append the cookie and not erase the first one
+
+  Reading cookies
+    just type document.cookie
+
+  Cookie Expiry Dates
+    Cookie are session cookies by default, which means they are deleted once a browser
+    session is closed.
+
+    Cookies can be made persistent by adding 'expires=date'
+    The date is a date value in UTC String format
+
+    An alternative is the set the max-age value (in seconds),
+      document.cookie = 'name=batman; max-age=86400'
+
+    Path and Domain of Cookies
+      By default, cookies can only be read by pages inside the same directory.
+      The path can be changed so that any page in the root directory can read the cookie.
+
+      document.cookie = 'name=Batman; path=/';
+
+    Secure Cookies
+      Adding the string ';secure' to the end of the cookie will ensure its only transmitted
+      over https network
+
+    Deleting Cookings
+      to remove a cookie, set it to expire in the past
+
+      document.cookie = 'name=Batman; expires=Thu, 01 Jan 1970 00:00:01 GMT';
+
+    Timing Functions
+      setTimeout()
+        Executes the callback function after a certain amount of time
+        setTimeout(callback, milliseconds);
+
+        when executed, setTimeout() returns a number, which is an ID that references
+        to the timeout.  We can use this ID to cancel the timer with clearTimeout();
+
+      setInterval()
+        Similar to setTimeout but it will repeat the callback function
+
+      use clearInterval() to stop the repeat.
