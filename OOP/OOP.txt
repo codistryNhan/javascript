@@ -1,0 +1,116 @@
+Object Oriented Programming
+  PIE - Polymorphism, Inheritance, Encapsulation
+
+  Encapsulation
+    Keeping the programming logic inside an Object
+    Create methods available to implement functionality,
+    without the outside world needing to know how its done.
+
+  Polymorphism
+    Objects can share the same methods but also have the ability
+    to override shared methods with a more specific implementation.
+
+  Inheritance
+    Take an object that already exists, inherit all its properties and methods,
+    improve its functionality by adding new properties and methods.
+
+Classes
+  Classes are blueprints for Objects.
+  Objects are instances of a Class.
+
+  Constructor Functions
+    ES5
+    const Dice = function(sides=6){
+      this.sides = sides;
+      this.roll = function(){
+        return Math.floor(this.sides * Math.random() + 1);
+      }
+    }
+
+    const redDice = new Dice();
+
+    ES6
+    class Dice{
+      constructor(sides=6){
+        this.sides = side;
+      }
+
+      roll(){
+        return Math.floor( this.sides * Math.random() + 1);
+      }
+    }
+
+    let blueDice = new Dice;
+
+    Constructor Property
+      All objects have a constructor property that returns the constructor function
+      that created it.
+
+      blueDice.constuctor; // Function: Dice
+
+      We can also use the constructor property to instantiate a copy of an object.
+
+      let greenDice = new redDice.constructor(10);
+
+    Static methods
+      are methods only available to the Class and not instances of the class.
+      use the keyword static before method name.
+
+  Prototypal Inheritance
+    JavaScript uses prototypal inheritance model.
+    -Every class has a prototype property that is shared by every instance of the class.
+    -Allows to add properties and methods after the class is created.
+
+  Find prototype of an object
+    Use the constructor's prototype property
+      obj.constructor.prototype
+
+    Use Object.getPrototypeOf(obj);
+
+    Use __proto__
+      obj.__proto__;
+
+  Own Properties
+    Check if the property is its own, or from the prototype.
+      obj.hasOwnProperty('name');
+
+  Private Variables
+    How to keep your variables private
+    class Dog {
+      constructor(name, age){
+        this.name = name;
+        let _age = age;
+        this.getAge = () => _age;
+        this.setAge = age => _age = age;
+      }
+    }
+
+    let corgi = new Dog('bob', 5);
+    console.log(corgi.getAge()); //5
+
+  Enumerable
+    All built-in methods are non-enumerable.
+    Any user-defined methods are.
+
+  Inheritance
+    A Class can inherit from another class using extends keyword
+
+  Property Attributes and Descriptors
+    value - value of the property, undefined by default
+    writable - boolean value shows whether a property can be changed or not
+    enumerable - boolean value shows whether a property will show up in a 'for in' loop
+    configurable - boolean value wheter you can delete a property or change its
+      attributes.
+
+    Object.getOwnPropertyDescriptor(me, 'name');
+
+    Object.defineProperty(me, 'name', { value: 'bob', writable: true, enumerable: 'true', configurable: true})
+
+  Getter and Setters
+    Instead of values, we can set getters and setters for property descriptors.
+
+  Creating Objects from Other Objects
+    Object.create();
+
+  Mixins
+    Object.assign();
