@@ -1,0 +1,53 @@
+AJAX
+  Allows web pages to communicate asynchronously with a server and
+  dynamically update web pages without reloading.
+
+  Same-Origin Policy
+    The same-origin policy blocks all requests from a domain that is
+    different from the page making the request.
+
+    Cross-origin resource sharing(CORS) allows resources to be requested
+    from another website outside the original domain.
+
+  Fetch API
+    The Fetch API uses promises to avoid callback hell.
+
+    Basic Usage
+      fetch(), has one mandatory argument, the URL of the resource.
+      ex.
+        fetch('https://example.com/data')
+        .then( handle response )
+        .catch( handle error )
+
+  Response Interface
+    Fetch's response object have several properties and methods
+    to manage the response.
+
+    response.ok
+      contains a boolean stating wheter the response was successful or not.
+
+    response.status
+      contains the code of the response
+
+    response.headers
+      contains response headers
+
+    response.url
+      contains the string of the URL response
+
+    response.redirected
+      a boolean value if the response if result of a redirect
+
+    response.type
+      a string value of 'basic', 'cors', 'error', or 'opaque'.
+
+    redirect()
+      redirect to another URL
+
+    text()
+
+    blob()
+      read a file of raw data such as an image.
+
+  JSON Responses
+    json() transform a stream of JSON data into a JavaScript Object.
