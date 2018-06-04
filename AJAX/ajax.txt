@@ -51,3 +51,45 @@ AJAX
 
   JSON Responses
     json() transform a stream of JSON data into a JavaScript Object.
+
+  Request Object
+    Request() constructor
+      url - URL of the resource, this property is required
+
+      method - which HTTP method should be used
+              GET - request a resource
+              POST - create a resource
+              PUT - insert or update a resource
+              PATCH - make partial udpate to a resource
+              DELTE - delete a resource
+
+      headers - this is a headers object
+
+      mode - specify CORS is used or not, enabled by default
+
+      cache -
+
+      credentials -
+
+      redirect - specifies what to do if the response returns a redirect.
+                'follow' - follow the redirect
+                'error' - error is thrown
+                'manual' - the user has to click on the link to follow the redirect
+
+  Headers Interface
+    headers are used to pass on any additional information about the reuest or response
+    ex. file-type of the resource, cookie information, authentication information.
+
+    Headers Object
+
+    let headers = new Headers({ 'Content-Type': 'text/plain',
+                                'Accept-Charset':'utf-8',
+                                'Accept'
+                              });
+
+    Properties/Methods
+      has();
+      get();
+      set();
+      append();
+      delete();
